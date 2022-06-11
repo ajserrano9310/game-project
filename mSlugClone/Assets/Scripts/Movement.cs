@@ -10,17 +10,59 @@ public class Movement : MonoBehaviour
     private float jumpForce;
     private bool isJumping; 
     private float moveHorizontal;
-    private float moveVertical; 
+    private float moveVertical;
+
+    private void Start()
+    {
+        // This is the line of code for grabbing any coponent
+        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+
+        moveSpeed = 3f;
+        jumpForce = 60f;
+        isJumping = false;
+
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        //horizontalInput.GetAxisRaw("Horizontal");
+
+        moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");
 
     }
 
     private void FixedUpdate()
     {
-       
+        // If we are running left or right
+        if (moveHorizontal > 0.1f || moveHorizontal < -0.1f)
+        {
+            rigidbody2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0), ForceMode2D.Impulse); 
+
+        }
+
+        if (!isJumping && moveVertical > 0.1f)
+        {
+            rigidbody2D.AddForce(new Vector2(0f, moveVertical * moveSpeed), ForceMode2D.Impulse);
+
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Platform")
+        {
+            isJumping = false; 
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+        {
+            isJumping = true;
+        }
     }
 }
