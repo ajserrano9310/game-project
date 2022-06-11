@@ -17,8 +17,8 @@ public class Movement : MonoBehaviour
         // This is the line of code for grabbing any coponent
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
 
-        moveSpeed = 3f;
-        jumpForce = 60f;
+        moveSpeed = 1f;
+        jumpForce = 30f;
         isJumping = false;
 
     }
@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
 
         if (!isJumping && moveVertical > 0.1f)
         {
-            rigidbody2D.AddForce(new Vector2(0f, moveVertical * moveSpeed), ForceMode2D.Impulse);
+            rigidbody2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
 
         }
 
