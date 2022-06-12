@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     private bool isJumping; 
     private float moveHorizontal;
     private float moveVertical;
+    private bool canJump; 
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class Movement : MonoBehaviour
         moveSpeed = 1f;
         jumpForce = 30f;
         isJumping = false;
+        canJump = true; 
 
     }
 
@@ -42,9 +44,10 @@ public class Movement : MonoBehaviour
 
         }
 
-        if (!isJumping && moveVertical > 0.1f)
+        if (canJump && !isJumping && moveVertical > 0.1f)
         {
             rigidbody2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
+            canJump = false; 
 
         }
 
@@ -54,7 +57,8 @@ public class Movement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Platform")
         {
-            isJumping = false; 
+            isJumping = false;
+            Invoke("ResetJump", 2f);
         }
     }
 
@@ -64,5 +68,10 @@ public class Movement : MonoBehaviour
         {
             isJumping = true;
         }
+    }
+
+    private void ResetJump()
+    {
+        canJump = true;
     }
 }
