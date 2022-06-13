@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
     {
 
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Vertical");
+        moveVertical = Input.GetAxisRaw("Jump");
 
     }
 
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
         if(collision.gameObject.tag == "Platform")
         {
             isJumping = false;
-            Invoke("ResetJump", 2f);
+            Invoke("ResetJump", 0.25f);
         }
     }
 
