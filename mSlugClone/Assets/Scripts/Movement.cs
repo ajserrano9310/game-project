@@ -11,7 +11,11 @@ public class Movement : MonoBehaviour
     private bool isJumping; 
     private float moveHorizontal;
     private float moveVertical;
-    private bool canJump; 
+    private bool canJump;
+    private bool facingRight = true; 
+
+
+
 
     private void Start()
     {
@@ -51,6 +55,18 @@ public class Movement : MonoBehaviour
 
         }
 
+        if (moveHorizontal > 0 && !facingRight)
+        {
+           
+            Flip();
+        }
+
+        if (moveHorizontal < 0 && facingRight)
+        {
+
+            Flip();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,5 +89,14 @@ public class Movement : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
+    }
+
+    private void Flip()
+    {
+
+        facingRight = !facingRight;
+
+        transform.Rotate(0f, 180f, 0f);
+
     }
 }
