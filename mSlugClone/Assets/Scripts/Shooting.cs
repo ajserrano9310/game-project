@@ -5,7 +5,8 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
-    public GameObject projectile; 
+    public GameObject projectile;
+    public Transform firePoint; 
 
     void Update()
     {
@@ -21,7 +22,7 @@ public class Shooting : MonoBehaviour
         // Shoot the projectile 
         // Instantiate the projectile before we even think about position. 
 
-        Instantiate(projectile, transform.position, transform.rotation);
-        Debug.Log("I'm shooting"); 
+        Instantiate(projectile, firePoint.position, firePoint.rotation);
+         
     }
 }
