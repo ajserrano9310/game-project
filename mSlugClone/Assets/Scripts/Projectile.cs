@@ -21,13 +21,18 @@ public class Projectile : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
 
             Debug.Log("Collided with enemy");
             Destroy(projectile);
+        }
+
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponenet))
+        {
+            enemyComponenet.DecreaseEnemyHealth(10f); 
         }
     }
 
