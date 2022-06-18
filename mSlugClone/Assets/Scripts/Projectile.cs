@@ -27,10 +27,10 @@ public class Projectile : MonoBehaviour
         {
 
             Debug.Log("Collided with enemy");
-            Destroy(projectile);
+            Destroy(gameObject);
         }
 
-        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponenet))
+        if (collision.gameObject.TryGetComponent(out Enemy enemyComponenet))
         {
             enemyComponenet.DecreaseEnemyHealth(10f); 
         }
