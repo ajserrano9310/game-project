@@ -23,6 +23,7 @@ public class Shooting : MonoBehaviour
         // Instantiate the projectile before we even think about position. 
 
         Instantiate(projectile, firePoint.position, firePoint.rotation);
+        Debug.Log("I am shooting bullets");
          
     }
 }
