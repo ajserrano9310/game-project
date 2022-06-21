@@ -7,12 +7,10 @@ public class HealtBar : MonoBehaviour
 {
 
     public Slider slider;
-    public int num;
 
     public void SetHealth(int health)
     {
 
-        slider.value = health;
-
+        slider.value -= health;
     }
 }

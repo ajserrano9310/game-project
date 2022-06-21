@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int health;
+    public HealtBar healt;
+
+    private void Update()
     {
-        
+        if (Input.GetButton("Fire1"))
+        {
+            Debug.Log("I just pressed A");
+            healt.SetHealth(10);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
