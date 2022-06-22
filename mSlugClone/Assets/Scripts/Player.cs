@@ -4,16 +4,38 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int health;
+    public int maxStamina;
     public HealtBar healt;
+    private Movement movement; 
+
+    private float playerSpeed;
+
+    public float PlayerSpeed { get => playerSpeed; set => playerSpeed = value; }
+
+    private void Start()
+    {
+        movement = gameObject.GetComponent<Movement>();
+        playerSpeed = 1f;
+    }
 
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
+        
+        if (Input.GetButton("Fire2") && healt.CanSprint && (healt.GetCurrentStamina() > 0) )
         {
-            Debug.Log("I just pressed A");
-            healt.SetHealth(10);
+            healt.IsSprinting = true; 
+            healt.Sprint();
+            movement.UpdatePlayerSpeed(playerSpeed * 2);
         }
+        else
+        {
+            healt.IsSprinting = false;
+            healt.RegenerateStamina();
+            movement.UpdatePlayerSpeed(playerSpeed);
+        }
+
+        
+        
     }
 
 

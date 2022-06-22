@@ -14,23 +14,18 @@ public class Movement : MonoBehaviour
     private bool canJump;
     private bool facingRight = true; 
 
-
-
-
     private void Start()
     {
         // This is the line of code for grabbing any coponent
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
 
-        moveSpeed = 1f;
-        jumpForce = 30f;
+        moveSpeed = 1.5f;
+        jumpForce = 50f;
         isJumping = false;
         canJump = true; 
 
     }
 
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -44,7 +39,7 @@ public class Movement : MonoBehaviour
         // If we are running left or right
         if (moveHorizontal > 0.1f || moveHorizontal < -0.1f)
         {
-            rigidbody2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0), ForceMode2D.Impulse); 
+            rigidbody2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0), ForceMode2D.Impulse);
 
         }
 
@@ -95,8 +90,12 @@ public class Movement : MonoBehaviour
     {
 
         facingRight = !facingRight;
-
         transform.Rotate(0f, 180f, 0f);
 
+    }
+
+    public void UpdatePlayerSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
 }
