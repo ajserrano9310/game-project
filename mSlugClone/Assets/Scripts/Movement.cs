@@ -6,18 +6,28 @@ public class Movement : MonoBehaviour
 {
 
     private float moveSpeed = 0f;
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rb;
     private float jumpForce;
     private bool isJumping; 
     private float moveHorizontal;
     private float moveVertical;
     private bool canJump;
-    private bool facingRight = true; 
+    private bool facingRight = true;
+
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2.0f;
+
+    private void Awake()
+    {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+
 
     private void Start()
     {
         // This is the line of code for grabbing any coponent
-        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        
 
         moveSpeed = 1.5f;
         jumpForce = 50f;
@@ -32,6 +42,21 @@ public class Movement : MonoBehaviour
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Jump");
 
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.velocity = Vector2.up * jumpForce;
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            Debug.Log("Is this working??");
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
     }
 
     private void FixedUpdate()
@@ -39,20 +64,13 @@ public class Movement : MonoBehaviour
         // If we are running left or right
         if (moveHorizontal > 0.1f || moveHorizontal < -0.1f)
         {
-            rigidbody2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0), ForceMode2D.Impulse);
-
-        }
-
-        if (canJump && !isJumping && moveVertical > 0.1f)
-        {
-            rigidbody2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
-            canJump = false; 
+            rb.AddForce(new Vector2(moveHorizontal * moveSpeed, 0), ForceMode2D.Impulse);
 
         }
 
         if (moveHorizontal > 0 && !facingRight)
         {
-           
+
             Flip();
         }
 
@@ -61,6 +79,18 @@ public class Movement : MonoBehaviour
 
             Flip();
         }
+
+        /*
+        if (canJump && !isJumping && moveVertical > 0.1f)
+        {
+            ImproveJumping();
+            rb.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
+            canJump = false; 
+
+        }
+        */
+
+      
 
     }
 
@@ -97,5 +127,9 @@ public class Movement : MonoBehaviour
     public void UpdatePlayerSpeed(float speed)
     {
         moveSpeed = speed;
+    }
+
+    public void ImproveJumping()
+    {
     }
 }

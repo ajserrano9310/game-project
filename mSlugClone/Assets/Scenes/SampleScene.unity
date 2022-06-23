@@ -223,7 +223,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 7.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1462835956}
   offset: {x: 0, y: 0, z: -10}
-  smoothFactor: 0.25
+  smoothFactor: 0.1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 20716e1617ff5694fb993dc78a45a487, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1187,7 +1187,7 @@ Rigidbody2D:
   m_Mass: 0.55520386
   m_LinearDrag: 4
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -1205,6 +1205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d633b651cc661f49ae638ebe16b4631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
 --- !u!70 &1462835959
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

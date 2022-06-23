@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         movement = gameObject.GetComponent<Movement>();
-        playerSpeed = 1f;
+        playerSpeed = 0.75f;
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         {
             healt.IsSprinting = true; 
             healt.Sprint();
-            movement.UpdatePlayerSpeed(playerSpeed * 2);
+            movement.UpdatePlayerSpeed(playerSpeed * 1.25f);
         }
         else
         {

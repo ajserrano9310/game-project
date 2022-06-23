@@ -8,7 +8,7 @@ public class HealtBar : MonoBehaviour
 
     public Slider slider;
 
-    public const float staminaDrain = 10f;
+    public const float staminaDrain = 25f;
     public const float staminaRegenValue = 10f;
     public const float maxStamina = 100f; 
 
