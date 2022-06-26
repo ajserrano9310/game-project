@@ -15,9 +15,11 @@ public class HealtBar : MonoBehaviour
 
     private bool isSprinting = false;
     private bool canSprint = true;
+    private bool needsToRegenerate = false;
 
     public bool IsSprinting { get => isSprinting; set => isSprinting = value; }
     public bool CanSprint { get => canSprint; set => canSprint = value; }
+    public bool NeedsToRegenerate { get => needsToRegenerate; set => needsToRegenerate = value; }
 
     public void Sprint()
     {
