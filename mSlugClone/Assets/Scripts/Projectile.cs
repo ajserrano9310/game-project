@@ -15,18 +15,10 @@ public class Projectile : MonoBehaviour
         projectile.velocity = transform.right * projectileVelocity; 
     }
 
-    private void Update()
-    {
-        //projectile.AddForce(new Vector2(projectileVelocity, 0), ForceMode2D.Impulse);
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
-            Debug.Log("Collided with enemy");
             Destroy(gameObject);
         }
 
@@ -37,3 +29,4 @@ public class Projectile : MonoBehaviour
     }
 
 }
+

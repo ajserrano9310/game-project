@@ -7,6 +7,12 @@ public class Enemy : MonoBehaviour
 
     private float enemyCurrentHealth;
     private float enemyMaxHealth = 100f;
+    public Projectile projectile;
+    public Transform firePoint;
+
+
+    public Transform player;
+    const float range = 10f;  
 
     private void Start()
     {
@@ -26,7 +32,26 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        
+        if(Vector2.Distance(player.position, transform.position) <= range)
+        {
+           
+            Invoke("Shoot", 3f); 
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Debug.Log("enter range");
+        }       
+    }
+
+    private void Shoot()
+    {
+        Projectile bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
+
+        Destroy(bullet, 1f); 
     }
 
 
