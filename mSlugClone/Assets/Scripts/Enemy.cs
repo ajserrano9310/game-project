@@ -7,8 +7,10 @@ public class Enemy : MonoBehaviour
 
     private float enemyCurrentHealth;
     private float enemyMaxHealth = 100f;
-    public Projectile projectile;
+    public EnemyProjectile projectile;
     public Transform firePoint;
+    private const float TimeToShoot = 5f;
+    private float timer; 
 
 
     public Transform player;
@@ -16,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        timer = TimeToShoot; 
         enemyCurrentHealth = enemyMaxHealth; 
     }
 
@@ -32,26 +35,37 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(Vector2.Distance(player.position, transform.position) <= range)
+        if (Vector2.Distance(player.position, transform.position) <= range)
         {
-           
-            Invoke("Shoot", 3f); 
+            Debug.Log("Player is within instance"); 
+            timer -= Time.deltaTime;
+            if (timer > 0)
+            {
+                Debug.Log("Not time to shoot tho");
+                return;
+            }
+            else
+            {
+                Debug.Log("Shooting");
+                Shoot();
+                ResetTimer(); 
+            }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
+        else
         {
-            Debug.Log("enter range");
-        }       
+            ResetTimer(); 
+        }
     }
 
     private void Shoot()
     {
-        Projectile bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        EnemyProjectile bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        Destroy(bullet, 0.1f); 
+    }
 
-        Destroy(bullet, 1f); 
+    private void ResetTimer()
+    {
+        timer = TimeToShoot; 
     }
 
 
