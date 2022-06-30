@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab0e2da3636b184eb21e745aa62bbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 8700971286603838895, guid: 42fdf68d4ea1abd41ac356167e38541d, type: 3}
+  projectile: {fileID: 4677974659737652718, guid: 42fdf68d4ea1abd41ac356167e38541d, type: 3}
   firePoint: {fileID: 136558559}
   player: {fileID: 1462835956}
 --- !u!1 &125509998

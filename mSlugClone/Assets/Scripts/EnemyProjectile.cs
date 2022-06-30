@@ -19,14 +19,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("Hit player");
             Destroy(gameObject);
             
         }
-        /*
-        if (collision.gameObject.TryGetComponent(out Enemy enemyComponenet))
-        {
-            enemyComponenet.DecreaseEnemyHealth(10f);
-        }
-        */
     }
 }

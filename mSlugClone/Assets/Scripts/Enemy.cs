@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour 
 {
 
     private float enemyCurrentHealth;
     private float enemyMaxHealth = 100f;
-    public EnemyProjectile projectile;
+    public GameObject projectile;
     public Transform firePoint;
-    private const float TimeToShoot = 5f;
+    private const float TimeToShoot = 1f;
     private float timer; 
 
 
@@ -59,8 +59,8 @@ public class Enemy : MonoBehaviour
 
     private void Shoot()
     {
-        EnemyProjectile bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
-        Destroy(bullet, 0.1f); 
+        GameObject bullet = (GameObject)(Instantiate(projectile, firePoint.position, firePoint.rotation));
+        Destroy(bullet, 0.25f); 
     }
 
     private void ResetTimer()
