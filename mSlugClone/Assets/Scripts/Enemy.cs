@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour 
+abstract public class Enemy : MonoBehaviour 
 {
 
     private float enemyCurrentHealth;
     private float enemyMaxHealth = 100f;
     public GameObject projectile;
-    public Transform firePoint;
+    public Transform player;
+
+    //public Transform firePoint;
+
+
     private const float TimeToShoot = 1f;
     private float timer; 
 
 
-    public Transform player;
+    
     const float range = 10f;  
 
     private void Start()
@@ -57,11 +61,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Shoot()
-    {
-        GameObject bullet = (GameObject)(Instantiate(projectile, firePoint.position, firePoint.rotation));
-        Destroy(bullet, 0.25f); 
-    }
+    public abstract void Shoot();
+   
+        
+       // GameObject bullet = (GameObject)(Instantiate(projectile, firePoint.position, firePoint.rotation));
+       // Destroy(bullet, 0.25f); 
+    
 
     private void ResetTimer()
     {
