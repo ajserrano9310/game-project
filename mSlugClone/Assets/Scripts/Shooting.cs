@@ -19,9 +19,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        // Shoot the projectile 
-        // Instantiate the projectile before we even think about position. 
-
+       
         Instantiate(projectile, firePoint.position, firePoint.rotation);
          
     }

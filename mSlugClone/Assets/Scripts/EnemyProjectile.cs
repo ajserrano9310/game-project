@@ -11,7 +11,7 @@ public class EnemyProjectile : MonoBehaviour
     void Start()
     {
         projectile = gameObject.GetComponent<Rigidbody2D>();
-        projectileVelocity = 20f;
+        projectileVelocity = 5f;
         projectile.velocity = transform.right * projectileVelocity;
     }
 

@@ -4,36 +4,58 @@ using UnityEngine;
 
 public class SingleShotEnemy : Enemy
 {
-    
-    // Update is called once per frame
+
+
+    private Transform firePoint;
+
+    public GameObject projectile;
+
+    private void Start()
+    {
+        firePoint = transform.Find("EnemyFirepoint"); 
+
+        if(firePoint == null)
+        {
+            Debug.Log("This shit was null"); 
+        }
+        else
+        {
+            Debug.Log("The name of the required object is:" + firePoint.name);
+        }
+    }
+
     void Update()
     {
         if (Vector2.Distance(player.position, transform.position) <= Range)
         {
-            Debug.Log("Player is within instance");
             timer -= Time.deltaTime;
+
             if (timer > 0)
             {
-                Debug.Log("Not time to shoot tho");
                 return;
             }
             else
             {
-                Debug.Log("Shooting");
                 Shoot();
                 ResetTimer();
             }
         }
+
         else
         {
-            ResetTimer();
+            if(timer < GetTimeForTimer())
+            {
+                ResetTimer();
+            }
+            
         }
     }
 
     public override void Shoot()
     {
-        
-        Debug.Log("Shooting"); 
+
+         GameObject bullet = (GameObject)(Instantiate(projectile, firePoint.position, firePoint.rotation));
+         Destroy(bullet, 0.25f); 
     }
 
 

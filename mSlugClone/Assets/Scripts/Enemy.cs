@@ -6,24 +6,22 @@ abstract public class Enemy : MonoBehaviour
 {
 
     private float enemyCurrentHealth;
-    private float enemyMaxHealth = 100f;
-    public GameObject projectile;
+    private const float EnemyMaxHealth = 100f;
     public Transform player;
-
-    //public Transform firePoint;
-
 
     private const float TimeToShoot = 1f;
     public float timer; 
-
-
     
-    public const float Range = 10f;  
+    public const float Range = 10f;
+
+    #region Abstract Methods
+    public abstract void Shoot();
+    #endregion
 
     private void Start()
     {
         timer = TimeToShoot; 
-        enemyCurrentHealth = enemyMaxHealth; 
+        enemyCurrentHealth = EnemyMaxHealth; 
     }
 
     public void DecreaseEnemyHealth(float damage)
@@ -37,18 +35,6 @@ abstract public class Enemy : MonoBehaviour
         Debug.Log(enemyCurrentHealth);
     }
 
-    private void Update()
-    {
-      
-    }
-
-    public abstract void Shoot();
-   
-        
-       // GameObject bullet = (GameObject)(Instantiate(projectile, firePoint.position, firePoint.rotation));
-       // Destroy(bullet, 0.25f); 
-    
-
     public void ResetTimer()
     {
         timer = TimeToShoot; 
@@ -59,5 +45,6 @@ abstract public class Enemy : MonoBehaviour
     {
         return TimeToShoot; 
     }
+
 
 }
