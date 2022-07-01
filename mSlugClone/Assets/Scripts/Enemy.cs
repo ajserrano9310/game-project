@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour 
+abstract public class Enemy : MonoBehaviour 
 {
 
     private float enemyCurrentHealth;
-    private float enemyMaxHealth = 100f;
-    public GameObject projectile;
-    public Transform firePoint;
-    private const float TimeToShoot = 1f;
-    private float timer; 
-
-
+    private const float EnemyMaxHealth = 100f;
     public Transform player;
-    const float range = 10f;  
+
+    private const float TimeToShoot = 1f;
+    public float timer; 
+    
+    public const float Range = 10f;
+
+    #region Abstract Methods
+    public abstract void Shoot();
+    #endregion
 
     private void Start()
     {
         timer = TimeToShoot; 
-        enemyCurrentHealth = enemyMaxHealth; 
+        enemyCurrentHealth = EnemyMaxHealth; 
     }
 
     public void DecreaseEnemyHealth(float damage)
@@ -33,39 +35,15 @@ public class Enemy : MonoBehaviour
         Debug.Log(enemyCurrentHealth);
     }
 
-    private void Update()
-    {
-        if (Vector2.Distance(player.position, transform.position) <= range)
-        {
-            Debug.Log("Player is within instance"); 
-            timer -= Time.deltaTime;
-            if (timer > 0)
-            {
-                Debug.Log("Not time to shoot tho");
-                return;
-            }
-            else
-            {
-                Debug.Log("Shooting");
-                Shoot();
-                ResetTimer(); 
-            }
-        }
-        else
-        {
-            ResetTimer(); 
-        }
-    }
-
-    private void Shoot()
-    {
-        GameObject bullet = (GameObject)(Instantiate(projectile, firePoint.position, firePoint.rotation));
-        Destroy(bullet, 0.25f); 
-    }
-
-    private void ResetTimer()
+    public void ResetTimer()
     {
         timer = TimeToShoot; 
+    }
+
+
+    public float GetTimeForTimer()
+    {
+        return TimeToShoot; 
     }
 
 
