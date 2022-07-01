@@ -50,7 +50,6 @@ public class SingleShotEnemy : Enemy
             
         }
     }
-
     public override void Shoot()
     {
 
