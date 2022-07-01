@@ -14,11 +14,11 @@ abstract public class Enemy : MonoBehaviour
 
 
     private const float TimeToShoot = 1f;
-    private float timer; 
+    public float timer; 
 
 
     
-    const float range = 10f;  
+    public const float Range = 10f;  
 
     private void Start()
     {
@@ -39,26 +39,7 @@ abstract public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(player.position, transform.position) <= range)
-        {
-            Debug.Log("Player is within instance"); 
-            timer -= Time.deltaTime;
-            if (timer > 0)
-            {
-                Debug.Log("Not time to shoot tho");
-                return;
-            }
-            else
-            {
-                Debug.Log("Shooting");
-                Shoot();
-                ResetTimer(); 
-            }
-        }
-        else
-        {
-            ResetTimer(); 
-        }
+      
     }
 
     public abstract void Shoot();
@@ -68,10 +49,15 @@ abstract public class Enemy : MonoBehaviour
        // Destroy(bullet, 0.25f); 
     
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         timer = TimeToShoot; 
     }
 
+
+    public float GetTimeForTimer()
+    {
+        return TimeToShoot; 
+    }
 
 }

@@ -265,12 +265,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 33317029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab0e2da3636b184eb21e745aa62bbcc, type: 3}
+  m_Script: {fileID: 11500000, guid: be24208e6c12aef468dc758e4239453c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 4677974659737652718, guid: 42fdf68d4ea1abd41ac356167e38541d, type: 3}
-  firePoint: {fileID: 136558559}
-  player: {fileID: 1462835956}
+  projectile: {fileID: 0}
+  player: {fileID: 0}
+  timer: 0
 --- !u!1 &125509998
 GameObject:
   m_ObjectHideFlags: 0
