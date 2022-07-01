@@ -38,22 +38,13 @@ public class pMovement : MonoBehaviour
         if (Input.GetButton("Fire2") && staminaBar.CanSprint && (staminaBar.GetCurrentStamina() > 0) && !staminaBar.IsSprinting)
         {
 
-            Debug.Log("I am sprinting");
-            /*
-            staminaBar.IsSprinting = true;
-            staminaBar.Sprint();
-            runSpeed = runSpeed * 1.25f;
-            */
+         
         }
         else
         {
             if (staminaBar.NeedsToRegenerate)
             {
-                /*
-                staminaBar.IsSprinting = false;
-                staminaBar.RegenerateStamina();
-                runSpeed = basePlayerSpeed;
-                */
+            
             }
            
         }
@@ -63,5 +54,10 @@ public class pMovement : MonoBehaviour
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+
+    public void Dash()
+    {
+
     }
 }
