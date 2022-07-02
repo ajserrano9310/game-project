@@ -10,8 +10,6 @@ public class Movement : MonoBehaviour
     private float jumpForce;
     private bool isJumping; 
     private float moveHorizontal;
-    private float moveVertical;
-    private bool canJump;
     private bool facingRight = true;
 
     public float fallMultiplier = 2.5f;
@@ -32,7 +30,7 @@ public class Movement : MonoBehaviour
         moveSpeed = 1.5f;
         jumpForce = 50f;
         isJumping = false;
-        canJump = true; 
+      
 
     }
 
@@ -40,7 +38,6 @@ public class Movement : MonoBehaviour
     {
 
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Jump");
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -80,16 +77,6 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
-        /*
-        if (canJump && !isJumping && moveVertical > 0.1f)
-        {
-            ImproveJumping();
-            rb.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
-            canJump = false; 
-
-        }
-        */
-
       
 
     }
@@ -109,11 +96,6 @@ public class Movement : MonoBehaviour
         {
             isJumping = true;
         }
-    }
-
-    private void ResetJump()
-    {
-        canJump = true;
     }
 
     private void Flip()
