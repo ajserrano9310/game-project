@@ -11,10 +11,5 @@ public class Player : MonoBehaviour
 
     public float PlayerSpeed { get => playerSpeed; set => playerSpeed = value; }
 
-    private void Start()
-    {
-       
-    }
-
 
 }

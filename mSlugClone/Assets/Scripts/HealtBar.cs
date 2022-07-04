@@ -1,7 +1,9 @@
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+
+using UnityEngine.UI; 
 
 public class HealtBar : MonoBehaviour
 {
@@ -31,6 +33,7 @@ public class HealtBar : MonoBehaviour
 
         if(slider.value == maxStamina)
         {
+            
             return; 
         }
 
