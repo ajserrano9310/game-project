@@ -21,7 +21,8 @@ abstract public class Enemy : MonoBehaviour
     private void Start()
     {
         timer = TimeToShoot; 
-        enemyCurrentHealth = EnemyMaxHealth; 
+        enemyCurrentHealth = EnemyMaxHealth;
+        Debug.Log("Tiny cheat. Finished homework");
     }
 
     public void DecreaseEnemyHealth(float damage)
