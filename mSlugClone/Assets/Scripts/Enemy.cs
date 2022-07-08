@@ -22,7 +22,7 @@ abstract public class Enemy : MonoBehaviour
     {
         timer = TimeToShoot; 
         enemyCurrentHealth = EnemyMaxHealth;
-        Debug.Log("Tiny cheat. Finished homework");
+    
     }
 
     public void DecreaseEnemyHealth(float damage)
